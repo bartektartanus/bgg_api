@@ -1,0 +1,16 @@
+name: bgg_api
+description: Board Game Geek API client
+version: 0.0.1
+repository: https://github.com/bartektartanus/bgg_api
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  xml: ^4.5.1
+  html_unescape: ^1.0.2
+  http: ^0.12.2
+  meta: ^1.2.3
+
+dev_dependencies:
+  test: ^1.15.4
