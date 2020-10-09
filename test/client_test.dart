@@ -2,7 +2,16 @@ import 'package:bgg_api/bgg_api.dart';
 import 'package:test/test.dart';
 
 void main() {
+
   test('should search board games by name', () async {
+    var bgg = Bgg();
+    expect(await bgg.searchBoardGames('list miłosny'), hasLength(greaterThan(0)));
+    expect(await bgg.searchBoardGames('catan'), hasLength(greaterThan(0)));
+    expect(await bgg.searchBoardGames('splendor'), hasLength(greaterThan(0)));
+    expect(await bgg.searchBoardGames('saboteur'), hasLength(greaterThan(0)));
+  });
+
+  test("should contain query in every board game's name", () async {
     var bgg = Bgg();
     var searchGames = await bgg.searchBoardGames('list miłosny');
     expect(searchGames, hasLength(greaterThan(0)));
