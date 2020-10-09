@@ -8,7 +8,7 @@ class BoardGameDecoder extends XmlDecoder<BoardGame> {
 
   @override
   BoardGame decode(XmlElement xml) {
-    return new BoardGame(
+    return BoardGame(
       id: readId(xml),
       name: readStringValue(xml, 'name'),
       description: readStringUnescaped(xml, 'description'),

@@ -3,14 +3,14 @@ import 'package:test/test.dart';
 
 void main() {
   test('should search board games by name', () async {
-    Bgg bgg = Bgg();
+    var bgg = Bgg();
     var searchGames = await bgg.searchBoardGames('list miłosny');
     expect(searchGames, hasLength(greaterThan(0)));
     expect(searchGames.every((e) => e.name.toLowerCase().contains('list miłosny')), isTrue);
   });
 
   test('should find board game by id', () async {
-    Bgg bgg = Bgg();
+    var bgg = Bgg();
     var boardGame = await bgg.getBoardGame(148228);
     expect(boardGame.name, equals('Splendor'));
     expect(boardGame.yearPublished, equals(2014));

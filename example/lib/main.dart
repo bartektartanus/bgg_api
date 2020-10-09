@@ -1,7 +1,7 @@
 import 'package:bgg_api/bgg_api.dart';
 
 void main() async {
-  Bgg bgg = Bgg();
+  var bgg = Bgg();
   var boardGame = await bgg.getBoardGame(148228);
 
   print(boardGame.name); // prints 'Splendor'

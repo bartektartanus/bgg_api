@@ -12,7 +12,7 @@ import 'xml/board_game_ref_decoder.dart';
 class Bgg {
   final BggHttp _http;
 
-  Bgg({BggHttp http}) : _http = http ?? new BggHttp();
+  Bgg({BggHttp http}) : _http = http ?? BggHttp();
 
   /// Retrieve information about a particular game by [gameId].
   Future<BoardGame> getBoardGame(int gameId) async {

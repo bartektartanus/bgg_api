@@ -19,16 +19,16 @@ abstract class XmlDecoder<T> {
 
   @protected
   String readStringUnescaped(XmlElement xml, String path) {
-    return new HtmlUnescape().convert(readString(xml, path));
+    return HtmlUnescape().convert(readString(xml, path));
   }
 
   @protected
   String readString(XmlElement xml, String path) {
-    return xml.findAllElements(path).firstWhere((element) => true, orElse: null)?.text;
+    return xml.findAllElements(path).firstWhere((element) => true, orElse: () => null)?.text;
   }
 
   @protected
   String readStringValue(XmlElement xml, String path) {
-    return xml.findAllElements(path).firstWhere((element) => true, orElse: null)?.getAttribute('value');
+    return xml.findAllElements(path).firstWhere((element) => true, orElse: () => null)?.getAttribute('value');
   }
 }
