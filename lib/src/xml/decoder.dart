@@ -14,7 +14,8 @@ abstract class XmlDecoder<T> {
 
   @protected
   int readIntValue(XmlElement xml, String path) {
-    return int.parse(readStringValue(xml, path));
+    var value = readStringValue(xml, path);
+    return value != null ? int.tryParse(value) : null;
   }
 
   @protected

@@ -1,3 +1,11 @@
+## [0.1.1] - 2020-10-09
+
+### Changed
+* yearPublished is optional now
+
+### Fixed
+* `exact` parameter for `search` request is only send when equals true
+
 ## [0.1.0] - 2020-10-09
 
 ### Added

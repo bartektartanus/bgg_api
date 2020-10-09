@@ -8,7 +8,7 @@ class BoardGameRef {
   const BoardGameRef({
     @required this.id,
     @required this.name,
-    @required this.yearPublished,
+    this.yearPublished,
   });
 
   @override

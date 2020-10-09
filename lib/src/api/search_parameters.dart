@@ -10,6 +10,10 @@ class SearchParameters extends QueryParameters {
 
   @override
   Map<String, dynamic> toMap() {
-    return {'query': query, 'type': type.map((e) => e.name()).join(','), 'exact': exact.toString()};
+    var map = {'query': query, 'type': type.map((e) => e.name()).join(',')};
+    if(exact){
+      map.putIfAbsent('exact', () => '1');
+    }
+    return map;
   }
 }
