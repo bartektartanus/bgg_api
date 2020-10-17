@@ -10,8 +10,14 @@ class Forum {
   final String lastPostDate;
   final List<Thread> threads;
 
-
-  Forum({this.id, this.groupId, this.title, this.description, this.numThreads, this.numPosts, this.lastPostDate,
+  Forum(
+      {this.id,
+      this.groupId,
+      this.title,
+      this.description,
+      this.numThreads,
+      this.numPosts,
+      this.lastPostDate,
       this.threads});
 
   @override

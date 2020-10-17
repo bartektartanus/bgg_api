@@ -24,7 +24,7 @@ class BoardGameDecoder extends XmlDecoder<BoardGame> {
       minAge: readIntValue(xml, 'minage'),
       thumbnail: Uri.parse(readString(xml, 'thumbnail')),
       image: Uri.parse(readString(xml, 'image')),
-      videos: readList(xml,'videos', 'video')?.map((e) => videoDecoder.decode(e))?.toList(),
+      videos: readList(xml, 'videos', 'video')?.map((e) => videoDecoder.decode(e))?.toList(),
     );
   }
 }

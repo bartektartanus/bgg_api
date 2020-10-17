@@ -30,7 +30,8 @@ class Bgg {
 
   /// Retrieve information about a particular board game by [gameId].
   Future<BoardGame> getBoardGame(int gameId) async {
-    return _getFirstElement(['thing'], const BoardGameDecoder(), ThingParameters(id: [gameId], type: [ThingType.boardgame]));
+    return _getFirstElement(
+        ['thing'], const BoardGameDecoder(), ThingParameters(id: [gameId], type: [ThingType.boardgame]));
   }
 
   /// Retrieve information about a particular thing.
@@ -70,8 +71,7 @@ class Bgg {
   }
 
   Future<T> _getRoot<T>(List<String> path, XmlDecoder<T> decoder, QueryParameters parameters) async {
-    final xml = (await _http.get(path, queryParameters: parameters.toMap()))
-        .rootElement;
+    final xml = (await _http.get(path, queryParameters: parameters.toMap())).rootElement;
     return decoder.decode(xml);
   }
 
