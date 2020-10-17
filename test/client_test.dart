@@ -37,6 +37,20 @@ void main() {
       expect(boardGame.image.toString(), startsWith('https://cf.geekdo-images.com/original'));
     });
 
+    test('should find board game expansion by id', () async {
+      var bgg = Bgg();
+      var boardGame = await bgg.getBoardGame(2807);
+      expect(boardGame.name, equals('Catan: 5-6 Player Extension'));
+      expect(boardGame.yearPublished, equals(1996));
+      expect(boardGame.minPlayers, equals(5));
+      expect(boardGame.maxPlayers, equals(6));
+      expect(boardGame.minPlayTime, equals(120));
+      expect(boardGame.minPlayTime, equals(120));
+      expect(boardGame.playingTime, equals(120));
+      expect(boardGame.minAge, equals(10));
+      expect(boardGame.description, startsWith('Allows you to add up to two more opponents to The Settlers of Catan.'));
+    });
+
     test('should find forum by id', () async {
       var bgg = Bgg();
       var forum = await bgg.getForum(ForumParameters(id: 1439902));

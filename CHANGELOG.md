@@ -1,3 +1,8 @@
+## [0.2.1] - 2020-10-17
+
+### Fixed
+* `getBoardGame` now returns boardgames and expansions
+
 ## [0.2.0] - 2020-10-17
 
 ### Added
