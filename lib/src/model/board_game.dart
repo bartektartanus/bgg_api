@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
 
-@immutable
+import 'video.dart';
+
 class BoardGame {
   final int id;
   final String name;
@@ -14,8 +15,9 @@ class BoardGame {
   final int minAge;
   final Uri thumbnail;
   final Uri image;
+  List<Video> videos;
 
-  const BoardGame({
+  BoardGame({
     @required this.id,
     @required this.name,
     @required this.description,
@@ -28,10 +30,11 @@ class BoardGame {
     @required this.minAge,
     @required this.thumbnail,
     @required this.image,
+    this.videos,
   });
 
   @override
   String toString() {
-    return 'BoardGame{id: $id, name: $name, yearPublished: $yearPublished, minPlayers: $minPlayers, maxPlayers: $maxPlayers, playingTime: $playingTime, minPlayTime: $minPlayTime, maxPlayTime: $maxPlayTime, minAge: $minAge, description: $description, thumbnail: $thumbnail, image: $image}';
+    return 'BoardGame{id: $id, name: $name, description: $description, yearPublished: $yearPublished, minPlayers: $minPlayers, maxPlayers: $maxPlayers, playingTime: $playingTime, minPlayTime: $minPlayTime, maxPlayTime: $maxPlayTime, minAge: $minAge, thumbnail: $thumbnail, image: $image, videos: $videos}';
   }
 }

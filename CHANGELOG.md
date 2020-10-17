@@ -1,3 +1,9 @@
+## [0.2.0] - 2020-10-17
+
+### Added
+* `videos` field to BoardGame class
+* `family`, `forum` and `forumlist` API methods support
+
 ## [0.1.1] - 2020-10-09
 
 ### Changed

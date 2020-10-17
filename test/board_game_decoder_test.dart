@@ -89,7 +89,43 @@ void main() {
           <link type="boardgameartist" id="14878" value="Pascal Quidault"/>
           <link type="boardgamepublisher" id="25842" value="Space Cowboys"/>
           <link type="boardgamepublisher" id="157" value="Asmodee"/>
-          </item>''';
+          <videos total="324">
+            <video id="285312" title="How to setup play and review Splendor" category="review" language="English" link="http://www.youtube.com/watch?v=rIzAdePKHy0" username="boulderman" userid="1206296" postdate="2020-10-06T11:05:13-05:00"/>
+            <video id="285181" title="Splendor (beanview) with 0ctavian" category="humor" language="English" link="http://www.youtube.com/watch?v=lxbeF63gsi4" username="Octavian1" userid="2697904" postdate="2020-10-05T22:31:49-05:00"/>
+            <video id="283121" title="Tutorial Main Board Game - Splendor (In Indonesian)" category="instructional" language="Indonesian" link="http://www.youtube.com/watch?v=sd71LuWS6dc" username="RwHsAvIrE" userid="442679" postdate="2020-09-22T21:21:01-05:00"/>
+          </videos>
+          <versions>
+            <item type="boardgameversion" id="417491">
+              <link type="boardgameversion" id="148228" value="Splendor" inbound="true"/>
+              <name type="primary" sortindex="1" value="Arabic/English edition"/>
+              <link type="boardgamepublisher" id="34501" value="Boardgame Space"/>
+              <link type="boardgamepublisher" id="25842" value="Space Cowboys"/>
+              <link type="boardgameartist" id="14878" value="Pascal Quidault"/>
+              <yearpublished value="2018"/>
+              <productcode value="SCSPL01AR"/>
+              <width value="0"/>
+              <length value="0"/>
+              <depth value="0"/>
+              <weight value="0"/>
+              <link type="language" id="2178" value="Arabic"/>
+              <link type="language" id="2184" value="English"/>
+            </item>
+              <item type="boardgameversion" id="317169">
+              <thumbnail>https://cf.geekdo-images.com/thumb/img/unaZk-IYAAPJ43BYVEf8MnK4Q_4=/fit-in/200x150/filters:strip_icc()/pic3087720.png</thumbnail>
+              <image>https://cf.geekdo-images.com/original/img/MuiGF9ZfdBO4oKFBWL46wvp6_sQ=/0x0/pic3087720.png</image>
+              <link type="boardgameversion" id="148228" value="Splendor" inbound="true"/>
+              <name type="primary" sortindex="1" value="Broadway Toys Chinese edition"/>
+              <link type="boardgamepublisher" id="9068" value="Broadway Toys LTD"/>
+              <yearpublished value="0"/>
+              <productcode value="BW0033"/>
+              <width value="0"/>
+              <length value="0"/>
+              <depth value="0"/>
+              <weight value="0"/>
+              <link type="language" id="2181" value="Chinese"/>
+            </item>
+          </versions>
+        </item>''';
     final document = XmlDocument.parse(xml);
     final decoder = BoardGameDecoder();
     var boardGame = decoder.decode(document.rootElement);
@@ -106,5 +142,8 @@ void main() {
     expect(boardGame.description, equals("Splendor is a game of chip-collecting and card development. Players are merchants of the Renaissance trying to buy gem mines, means of transportation, shops—all in order to acquire the most prestige points. If you're wealthy enough, you might even receive a visit from a noble at some point, which of course will further increase your prestige.\n\n"));
     expect(boardGame.thumbnail, equals(Uri.parse('https://cf.geekdo-images.com/thumb/img/D4hkkHfOgu22PwgJomjplWAveuo=/fit-in/200x150/filters:strip_icc()/pic1904079.jpg')));
     expect(boardGame.image, equals(Uri.parse('https://cf.geekdo-images.com/original/img/PgaVULm0QKeFV2zTro4hJEb70Yk=/0x0/pic1904079.jpg')));
+    expect(boardGame.videos?.length, equals(3));
+    expect(boardGame.videos[0].id, equals(285312));
+    expect(boardGame.videos[0].title, equals('How to setup play and review Splendor'));
   });
 }

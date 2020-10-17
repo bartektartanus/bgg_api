@@ -1,3 +1,4 @@
+import 'package:bgg_api/src/xml/video_decoder.dart';
 import 'package:xml/xml.dart';
 
 import '../model/board_game.dart';
@@ -5,6 +6,8 @@ import 'decoder.dart';
 
 class BoardGameDecoder extends XmlDecoder<BoardGame> {
   const BoardGameDecoder();
+
+  final VideoDecoder videoDecoder = const VideoDecoder();
 
   @override
   BoardGame decode(XmlElement xml) {
@@ -21,6 +24,7 @@ class BoardGameDecoder extends XmlDecoder<BoardGame> {
       minAge: readIntValue(xml, 'minage'),
       thumbnail: Uri.parse(readString(xml, 'thumbnail')),
       image: Uri.parse(readString(xml, 'image')),
+      videos: readList(xml,'videos', 'video')?.map((e) => videoDecoder.decode(e))?.toList(),
     );
   }
 }

@@ -10,7 +10,10 @@ abstract class XmlDecoder<T> {
   T decode(XmlElement xml);
 
   @protected
-  int readId(XmlElement xml) => int.parse(xml.getAttribute('id'));
+  int readIntAttribute(XmlElement xml, String attribute) => int.tryParse(readStringAttribute(xml, attribute) ?? '');
+
+  @protected
+  int readId(XmlElement xml) => int.tryParse(xml.getAttribute('id'));
 
   @protected
   int readIntValue(XmlElement xml, String path) {
@@ -29,7 +32,17 @@ abstract class XmlDecoder<T> {
   }
 
   @protected
+  String readStringAttribute(XmlElement xml, String attribute) {
+    return xml.getAttribute(attribute);
+  }
+
+  @protected
   String readStringValue(XmlElement xml, String path) {
     return xml.findAllElements(path).firstWhere((element) => true, orElse: () => null)?.getAttribute('value');
+  }
+
+  @protected
+  Iterable<XmlElement> readList(XmlElement xml, String path, String name) {
+    return xml.getElement(path)?.findAllElements(name);
   }
 }

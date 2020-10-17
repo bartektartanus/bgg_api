@@ -1,4 +1,7 @@
 import 'package:bgg_api/bgg_api.dart';
+import 'package:bgg_api/src/api/forum_list_parameters.dart';
+import 'package:bgg_api/src/api/forum_list_type.dart';
+import 'package:bgg_api/src/api/forum_parameters.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -32,6 +35,22 @@ void main() {
       expect(boardGame.description, startsWith('Splendor is a game of chip-collecting'));
       expect(boardGame.thumbnail.toString(), startsWith('https://cf.geekdo-images.com/thumb'));
       expect(boardGame.image.toString(), startsWith('https://cf.geekdo-images.com/original'));
+    });
+
+    test('should find forum by id', () async {
+      var bgg = Bgg();
+      var forum = await bgg.getForum(ForumParameters(id: 1439902));
+      expect(forum.id, equals(1439902));
+      expect(forum.title, equals('Sessions'));
+      expect(forum.threads.length, greaterThanOrEqualTo(10));
+      expect(forum.numPosts, greaterThanOrEqualTo(75));
+      expect(forum.numThreads, greaterThanOrEqualTo(10));
+    });
+
+    test('should find forum list by id', () async {
+      var bgg = Bgg();
+      var forumList = await bgg.getForumList(ForumListParameters(id: 148228, type: ForumListType.thing));
+      expect(forumList.length, equals(10));
     });
   });
 }
