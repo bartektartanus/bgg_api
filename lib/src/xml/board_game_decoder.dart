@@ -13,7 +13,7 @@ class BoardGameDecoder extends XmlDecoder<BoardGame> {
   BoardGame decode(XmlElement xml) {
     return BoardGame(
       id: readId(xml),
-      name: readStringValue(xml, 'name'),
+      name: readStringValueWithAttribute(xml, 'name', 'type', 'primary'),
       description: readStringUnescaped(xml, 'description'),
       yearPublished: readIntValue(xml, 'yearpublished'),
       minPlayers: readIntValue(xml, 'minplayers'),
@@ -24,7 +24,12 @@ class BoardGameDecoder extends XmlDecoder<BoardGame> {
       minAge: readIntValue(xml, 'minage'),
       thumbnail: Uri.parse(readString(xml, 'thumbnail')),
       image: Uri.parse(readString(xml, 'image')),
-      videos: readList(xml, 'videos', 'video')?.map((e) => videoDecoder.decode(e))?.toList(),
+      videos: findElements(getElement(xml, 'videos'), 'video')
+          ?.map((e) => videoDecoder.decode(e))
+          ?.toList(),
+      names: findElements(xml, 'name')
+          ?.map((e) => e.getAttribute('value'))
+          ?.toList(),
     );
   }
 }

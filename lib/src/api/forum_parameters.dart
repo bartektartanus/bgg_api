@@ -1,7 +1,5 @@
 import 'package:bgg_api/src/api/query_parameters.dart';
 
-import 'family_type.dart';
-
 class ForumParameters extends QueryParameters {
   ///	Specifies the id of the forum. This is the id that appears in the address of the page when visiting a forum in the browser.
   final int id;

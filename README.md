@@ -1,6 +1,8 @@
 # bgg_api
 
-[![pub package](https://img.shields.io/pub/v/bgg_api.svg)](https://pub.dartlang.org/packages/bgg_api) [![Build Status](https://travis-ci.org/bartektartanus/bgg_api.svg?branch=master)](https://travis-ci.org/bartektartanus/bgg_api) [![codecov](https://codecov.io/gh/bartektartanus/bgg_api/branch/master/graph/badge.svg)](https://codecov.io/gh/bartektartanus/bgg_api)
+[![pub package](https://img.shields.io/pub/v/bgg_api.svg)](https://pub.dartlang.org/packages/bgg_api) 
+[![Build Status](https://travis-ci.org/bartektartanus/bgg_api.svg?branch=master)](https://travis-ci.org/bartektartanus/bgg_api) 
+[![codecov](https://codecov.io/gh/bartektartanus/bgg_api/branch/master/graph/badge.svg)](https://codecov.io/gh/bartektartanus/bgg_api)
 
 
 [Board Game Geek][BGG] XML API client (version 2)

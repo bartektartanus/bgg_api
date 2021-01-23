@@ -145,5 +145,6 @@ void main() {
     expect(boardGame.videos?.length, equals(3));
     expect(boardGame.videos[0].id, equals(285312));
     expect(boardGame.videos[0].title, equals('How to setup play and review Splendor'));
+    expect(boardGame.names, equals(['Splendor', 'Goharneshan (گوهرنشان)', 'Роскошь']));
   });
 }

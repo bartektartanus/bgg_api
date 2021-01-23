@@ -15,7 +15,8 @@ class BoardGame {
   final int minAge;
   final Uri thumbnail;
   final Uri image;
-  List<Video> videos;
+  List<Video> videos = [];
+  List<String> names = [];
 
   BoardGame({
     @required this.id,
@@ -31,6 +32,7 @@ class BoardGame {
     @required this.thumbnail,
     @required this.image,
     this.videos,
+    this.names,
   });
 
   @override

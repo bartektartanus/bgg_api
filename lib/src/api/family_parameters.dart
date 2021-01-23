@@ -15,6 +15,9 @@ class FamilyParameters extends QueryParameters {
 
   @override
   Map<String, dynamic> toMap() {
-    return {'id': id.map((e) => e.toString()).join(','), 'type': type.map((e) => e.name()).join(',')};
+    return {
+      'id': id.map((e) => e.toString()).join(','),
+      'type': type.map((e) => e.name()).join(',')
+    };
   }
 }

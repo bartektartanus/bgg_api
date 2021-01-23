@@ -30,8 +30,12 @@ class Bgg {
 
   /// Retrieve information about a particular board game by [gameId].
   Future<BoardGame> getBoardGame(int gameId) async {
-    return _getFirstElement(['thing'], const BoardGameDecoder(),
-        ThingParameters(id: [gameId], type: [ThingType.boardgame, ThingType.boardgameexpansion]));
+    return _getFirstElement(
+        ['thing'],
+        const BoardGameDecoder(),
+        ThingParameters(
+            id: [gameId],
+            type: [ThingType.boardgame, ThingType.boardgameexpansion]));
   }
 
   /// Retrieve information about a particular thing.
@@ -56,8 +60,8 @@ class Bgg {
 
   /// Retrieves a list of board games (only) matching [query].
   Future<List<BoardGameRef>> searchBoardGames(String query) async {
-    return _getAllElements(
-        ['search'], const BoardGameRefDecoder(), SearchParameters(query: query, type: [ThingType.boardgame]));
+    return _getAllElements(['search'], const BoardGameRefDecoder(),
+        SearchParameters(query: query, type: [ThingType.boardgame]));
   }
 
   /// Retrieves a list of all things matching [query].
@@ -70,20 +74,25 @@ class Bgg {
     return _getAllElements(['search'], const ItemRefDecoder(), parameters);
   }
 
-  Future<T> _getRoot<T>(List<String> path, XmlDecoder<T> decoder, QueryParameters parameters) async {
-    final xml = (await _http.get(path, queryParameters: parameters.toMap())).rootElement;
+  Future<T> _getRoot<T>(List<String> path, XmlDecoder<T> decoder,
+      QueryParameters parameters) async {
+    final xml = (await _http.get(path, queryParameters: parameters.toMap()))
+        .rootElement;
     return decoder.decode(xml);
   }
 
-  Future<T> _getFirstElement<T>(List<String> path, XmlDecoder<T> decoder, QueryParameters parameters) async {
+  Future<T> _getFirstElement<T>(List<String> path, XmlDecoder<T> decoder,
+      QueryParameters parameters) async {
     final xml = (await _http.get(path, queryParameters: parameters.toMap()))
         .rootElement
         .children
-        .firstWhere((e) => e.nodeType == XmlNodeType.ELEMENT, orElse: () => null);
+        .firstWhere((e) => e.nodeType == XmlNodeType.ELEMENT,
+            orElse: () => null);
     return decoder.decode(xml);
   }
 
-  Future<List<T>> _getAllElements<T>(List<String> path, XmlDecoder<T> decoder, QueryParameters parameters) async {
+  Future<List<T>> _getAllElements<T>(List<String> path, XmlDecoder<T> decoder,
+      QueryParameters parameters) async {
     final xml = (await _http.get(path, queryParameters: parameters.toMap()))
         .rootElement
         .children

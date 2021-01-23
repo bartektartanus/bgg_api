@@ -10,7 +10,8 @@ abstract class XmlDecoder<T> {
   T decode(XmlElement xml);
 
   @protected
-  int readIntAttribute(XmlElement xml, String attribute) => int.tryParse(readStringAttribute(xml, attribute) ?? '');
+  int readIntAttribute(XmlElement xml, String attribute) =>
+      int.tryParse(readStringAttribute(xml, attribute) ?? '');
 
   @protected
   int readId(XmlElement xml) => int.tryParse(xml.getAttribute('id'));
@@ -28,7 +29,10 @@ abstract class XmlDecoder<T> {
 
   @protected
   String readString(XmlElement xml, String path) {
-    return xml.findAllElements(path).firstWhere((element) => true, orElse: () => null)?.text;
+    return xml
+        .findAllElements(path)
+        .firstWhere((element) => true, orElse: () => null)
+        ?.text;
   }
 
   @protected
@@ -38,11 +42,35 @@ abstract class XmlDecoder<T> {
 
   @protected
   String readStringValue(XmlElement xml, String path) {
-    return xml.findAllElements(path).firstWhere((element) => true, orElse: () => null)?.getAttribute('value');
+    return xml
+        .findAllElements(path)
+        .firstWhere((element) => true, orElse: () => null)
+        ?.getAttribute('value');
   }
 
   @protected
-  Iterable<XmlElement> readList(XmlElement xml, String path, String name) {
-    return xml.getElement(path)?.findAllElements(name);
+  String readStringValueWithAttribute(XmlElement xml, String path,
+      String attributeName, String attributeValue) {
+    return xml
+        .findAllElements(path)
+        .firstWhere(
+            (element) => element.getAttribute(attributeName) == attributeValue,
+            orElse: () => null)
+        ?.getAttribute('value');
+  }
+
+  @protected
+  XmlElement getElement(XmlElement xml, String path) {
+    return xml?.getElement(path);
+  }
+
+  @protected
+  Iterable<XmlElement> findElements(XmlElement xml, String name) {
+    return xml?.findElements(name) ?? [];
+  }
+
+  @protected
+  Iterable<XmlElement> findElementsRecursive(XmlElement xml, String name) {
+    return xml?.findAllElements(name) ?? [];
   }
 }

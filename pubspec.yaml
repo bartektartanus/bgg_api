@@ -2,7 +2,7 @@ name: bgg_api
 description:
   Board Game Geek XML API client (version 2)
   This package was inspired by bgg.dart package, which works with first version of BGG API.
-version: 0.2.1
+version: 0.2.2
 repository: https://github.com/bartektartanus/bgg_api
 
 environment:
@@ -12,9 +12,9 @@ dependencies:
   xml: ^4.5.1
   html_unescape: ^1.0.2
   http: ^0.12.2
-  meta: ^1.2.3
+  meta: ^1.2.4
 
 dev_dependencies:
-  test: ^1.15.4
-  test_coverage: ^0.4.3
+  test: ^1.15.7
+  test_coverage: ^0.5.0
   pedantic: ^1.9.2

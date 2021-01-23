@@ -8,5 +8,13 @@ class Video {
   int userId;
   String postDate;
 
-  Video({this.id, this.title, this.category, this.language, this.link, this.username, this.userId, this.postDate});
+  Video(
+      {this.id,
+      this.title,
+      this.category,
+      this.language,
+      this.link,
+      this.username,
+      this.userId,
+      this.postDate});
 }

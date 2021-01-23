@@ -33,8 +33,10 @@ void main() {
       expect(boardGame.playingTime, equals(30));
       expect(boardGame.minAge, equals(10));
       expect(boardGame.description, startsWith('Splendor is a game of chip-collecting'));
-      expect(boardGame.thumbnail.toString(), startsWith('https://cf.geekdo-images.com/thumb'));
-      expect(boardGame.image.toString(), startsWith('https://cf.geekdo-images.com/original'));
+      expect(boardGame.thumbnail.toString(), startsWith('https://cf.geekdo-images.com/'));
+      expect(boardGame.thumbnail.toString(), contains('thumb'));
+      expect(boardGame.image.toString(), startsWith('https://cf.geekdo-images.com/'));
+      expect(boardGame.image.toString(), contains('original'));
     });
 
     test('should find board game expansion by id', () async {

@@ -6,5 +6,11 @@ class Thread {
   String postDate;
   String lastPostDate;
 
-  Thread({this.id, this.subject, this.author, this.numArticles, this.postDate, this.lastPostDate});
+  Thread(
+      {this.id,
+      this.subject,
+      this.author,
+      this.numArticles,
+      this.postDate,
+      this.lastPostDate});
 }

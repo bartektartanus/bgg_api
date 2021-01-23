@@ -1,3 +1,11 @@
+## [0.2.2] - 2020-10-17
+
+### Changed
+* `meta` dependency bump
+
+### Added
+* field `names` to `BoardGame` with list of alternative names
+
 ## [0.2.1] - 2020-10-17
 
 ### Fixed
