@@ -1,4 +1,4 @@
-## [0.3.0] - 2020-10-17
+## [0.3.0-nullsafety] - 2020-10-17
 
 ### Breaking
 * migrate to Dart 2.12 and null safety
