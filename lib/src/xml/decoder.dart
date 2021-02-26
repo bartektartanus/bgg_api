@@ -1,76 +1,76 @@
 import 'package:html_unescape/html_unescape.dart';
 import 'package:meta/meta.dart';
 import 'package:xml/xml.dart';
+import '../utils/list.dart';
 
 @immutable
 abstract class XmlDecoder<T> {
   const XmlDecoder();
 
   /// Decodes [xml] to generic object T
-  T decode(XmlElement xml);
+  T decode(XmlNode xml);
 
   @protected
-  int readIntAttribute(XmlElement xml, String attribute) =>
+  int? readIntAttribute(XmlNode xml, String attribute) =>
       int.tryParse(readStringAttribute(xml, attribute) ?? '');
 
   @protected
-  int readId(XmlElement xml) => int.tryParse(xml.getAttribute('id'));
+  int? readId(XmlNode xml) => int.tryParse(xml.getAttribute('id') ?? '');
 
   @protected
-  int readIntValue(XmlElement xml, String path) {
+  int? readIntValue(XmlNode xml, String path) {
     var value = readStringValue(xml, path);
     return value != null ? int.tryParse(value) : null;
   }
 
   @protected
-  String readStringUnescaped(XmlElement xml, String path) {
-    return HtmlUnescape().convert(readString(xml, path));
+  String? readStringUnescaped(XmlNode xml, String path) {
+    var string = readString(xml, path);
+    return string != null ? HtmlUnescape().convert(string) : null;
   }
 
   @protected
-  String readString(XmlElement xml, String path) {
+  String? readString(XmlNode xml, String path) {
     return xml
         .findAllElements(path)
-        .firstWhere((element) => true, orElse: () => null)
+        .firstOrNull
         ?.text;
   }
 
   @protected
-  String readStringAttribute(XmlElement xml, String attribute) {
+  String? readStringAttribute(XmlNode xml, String attribute) {
     return xml.getAttribute(attribute);
   }
 
   @protected
-  String readStringValue(XmlElement xml, String path) {
+  String? readStringValue(XmlNode xml, String path) {
     return xml
         .findAllElements(path)
-        .firstWhere((element) => true, orElse: () => null)
+        .firstOrNull
         ?.getAttribute('value');
   }
 
   @protected
-  String readStringValueWithAttribute(XmlElement xml, String path,
+  String? readStringValueWithAttribute(XmlNode xml, String path,
       String attributeName, String attributeValue) {
     return xml
         .findAllElements(path)
-        .firstWhere(
-            (element) => element.getAttribute(attributeName) == attributeValue,
-            orElse: () => null)
+        .firstWhereOrNull((element) => element.getAttribute(attributeName) == attributeValue)
         ?.getAttribute('value');
   }
 
   @protected
-  XmlElement getElement(XmlElement xml, String path) {
-    return xml?.getElement(path);
+  XmlElement? getElement(XmlNode xml, String path) {
+    return xml.getElement(path);
   }
 
   @protected
-  Iterable<XmlElement> findElements(XmlElement xml, String name) {
+  Iterable<XmlElement> findElements(XmlNode? xml, String name) {
     return xml?.findElements(name) ?? [];
   }
 
   @protected
   Iterable<XmlElement> findElementsRecursive(XmlElement xml, String name) {
-    return xml?.findAllElements(name) ?? [];
+    return xml.findAllElements(name);
   }
 }

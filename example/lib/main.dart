@@ -2,7 +2,7 @@ import 'package:bgg_api/bgg_api.dart';
 
 void main() async {
   var bgg = Bgg();
-  var boardGame = await bgg.getBoardGame(148228);
+  var boardGame = (await bgg.getBoardGame(148228))!;
 
   print(boardGame.name); // prints 'Splendor'
   print(boardGame.yearPublished); // prints 2014

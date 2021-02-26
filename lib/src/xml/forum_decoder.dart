@@ -10,7 +10,7 @@ class ForumDecoder extends XmlDecoder<Forum> {
   final ThreadDecoder threadDecoder = const ThreadDecoder();
 
   @override
-  Forum decode(XmlElement xml) {
+  Forum decode(XmlNode xml) {
     return Forum(
       id: readId(xml),
       groupId: readIntAttribute(xml, 'groupid'),
@@ -20,8 +20,8 @@ class ForumDecoder extends XmlDecoder<Forum> {
       numPosts: readIntAttribute(xml, 'numposts'),
       lastPostDate: readStringAttribute(xml, 'lastpostdate'),
       threads: findElements(getElement(xml, 'threads'), 'thread')
-          ?.map((e) => threadDecoder.decode(e))
-          ?.toList(),
+          .map((e) => threadDecoder.decode(e))
+          .toList(),
     );
   }
 }

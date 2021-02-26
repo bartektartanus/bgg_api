@@ -13,12 +13,12 @@ class SearchParameters extends QueryParameters {
   /// Limit results to items that match the SEARCH_QUERY exactly
   final bool exact;
 
-  SearchParameters({this.query, this.type, this.exact = false});
+  SearchParameters({required this.query, this.type = const [], this.exact = false});
 
   @override
   Map<String, dynamic> toMap() {
     var map = {'query': query};
-    if (type != null && type.isNotEmpty) {
+    if (type.isNotEmpty) {
       map.putIfAbsent('type', () => type.map((e) => e.name()).join(','));
     }
     if (exact) {

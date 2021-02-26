@@ -11,13 +11,14 @@ class FamilyParameters extends QueryParameters {
   /// specified. Multiple FAMILYTYPEs can be specified in a comma-delimited list.
   final List<FamilyType> type;
 
-  FamilyParameters({this.id = const [], this.type = const []});
+  FamilyParameters({required this.id, this.type = const []});
 
   @override
   Map<String, dynamic> toMap() {
-    return {
-      'id': id.map((e) => e.toString()).join(','),
-      'type': type.map((e) => e.name()).join(',')
-    };
+    final map = {'id': id.map((e) => e.toString()).join(',')};
+    if(type.isNotEmpty) {
+      map['type'] = type.map((e) => e.name()).join(',');
+  }
+    return map;
   }
 }

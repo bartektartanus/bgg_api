@@ -7,7 +7,7 @@ class ItemRefDecoder extends XmlDecoder<ItemRef> {
   const ItemRefDecoder();
 
   @override
-  ItemRef decode(XmlElement xml) {
+  ItemRef decode(XmlNode xml) {
     return ItemRef(id: readId(xml), name: readStringValue(xml, 'name'));
   }
 }

@@ -1,13 +1,11 @@
-import 'package:meta/meta.dart';
-
 class BoardGameRef {
-  final int id;
-  final String name;
-  final int yearPublished;
+  final int? id;
+  final String? name;
+  final int? yearPublished;
 
   const BoardGameRef({
-    @required this.id,
-    @required this.name,
+    required this.id,
+    required this.name,
     this.yearPublished,
   });
 

@@ -7,7 +7,7 @@ class BoardGameRefDecoder extends XmlDecoder<BoardGameRef> {
   const BoardGameRefDecoder();
 
   @override
-  BoardGameRef decode(XmlElement xml) {
+  BoardGameRef decode(XmlNode xml) {
     return BoardGameRef(
         id: readId(xml),
         name: readStringValue(xml, 'name'),

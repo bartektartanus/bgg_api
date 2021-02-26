@@ -10,7 +10,7 @@ class BoardGameDecoder extends XmlDecoder<BoardGame> {
   final VideoDecoder videoDecoder = const VideoDecoder();
 
   @override
-  BoardGame decode(XmlElement xml) {
+  BoardGame decode(XmlNode xml) {
     return BoardGame(
       id: readId(xml),
       name: readStringValueWithAttribute(xml, 'name', 'type', 'primary'),
@@ -22,14 +22,15 @@ class BoardGameDecoder extends XmlDecoder<BoardGame> {
       minPlayTime: readIntValue(xml, 'minplaytime'),
       maxPlayTime: readIntValue(xml, 'maxplaytime'),
       minAge: readIntValue(xml, 'minage'),
-      thumbnail: Uri.parse(readString(xml, 'thumbnail')),
-      image: Uri.parse(readString(xml, 'image')),
+      thumbnail: Uri.tryParse(readString(xml, 'thumbnail') ?? ''),
+      image: Uri.tryParse(readString(xml, 'image') ?? ''),
       videos: findElements(getElement(xml, 'videos'), 'video')
-          ?.map((e) => videoDecoder.decode(e))
-          ?.toList(),
+          .map((e) => videoDecoder.decode(e))
+          .toList(),
       names: findElements(xml, 'name')
-          ?.map((e) => e.getAttribute('value'))
-          ?.toList(),
+          .map((e) => e.getAttribute('value'))
+          .whereType<String>()
+          .toList(),
     );
   }
 }

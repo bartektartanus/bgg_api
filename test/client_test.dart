@@ -18,12 +18,12 @@ void main() {
       var bgg = Bgg();
       var searchGames = await bgg.searchBoardGames('list miłosny');
       expect(searchGames, hasLength(greaterThan(0)));
-      expect(searchGames.every((e) => e.name.toLowerCase().contains('list miłosny')), isTrue);
+      expect(searchGames.every((e) => e.name!.toLowerCase().contains('list miłosny')), isTrue);
     });
 
     test('should find board game by id', () async {
       var bgg = Bgg();
-      var boardGame = await bgg.getBoardGame(148228);
+      var boardGame = (await bgg.getBoardGame(148228))!;
       expect(boardGame.name, equals('Splendor'));
       expect(boardGame.yearPublished, equals(2014));
       expect(boardGame.minPlayers, equals(2));
@@ -41,7 +41,7 @@ void main() {
 
     test('should find board game expansion by id', () async {
       var bgg = Bgg();
-      var boardGame = await bgg.getBoardGame(2807);
+      var boardGame = (await bgg.getBoardGame(2807))!;
       expect(boardGame.name, equals('Catan: 5-6 Player Extension'));
       expect(boardGame.yearPublished, equals(1996));
       expect(boardGame.minPlayers, equals(5));

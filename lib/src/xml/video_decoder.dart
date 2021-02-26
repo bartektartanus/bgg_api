@@ -7,7 +7,7 @@ class VideoDecoder extends XmlDecoder<Video> {
   const VideoDecoder();
 
   @override
-  Video decode(XmlElement xml) {
+  Video decode(XmlNode xml) {
     return Video(
       id: readIntAttribute(xml, 'id'),
       title: readStringAttribute(xml, 'title'),

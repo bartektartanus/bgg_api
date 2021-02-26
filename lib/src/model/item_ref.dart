@@ -1,10 +1,8 @@
-import 'package:meta/meta.dart';
-
 class ItemRef {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
 
-  ItemRef({@required this.id, @required this.name});
+  ItemRef({this.id, this.name});
 
   @override
   String toString() {

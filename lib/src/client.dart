@@ -9,6 +9,7 @@ import 'api/search_parameters.dart';
 import 'api/thing_parameters.dart';
 import 'api/thing_type.dart';
 import 'api/forum_parameters.dart';
+import 'utils/list.dart';
 import 'http.dart';
 import 'model/board_game.dart';
 import 'model/board_game_ref.dart';
@@ -26,20 +27,16 @@ import 'xml/item_ref_decoder.dart';
 class Bgg {
   final BggHttp _http;
 
-  Bgg({BggHttp http}) : _http = http ?? BggHttp();
+  Bgg({BggHttp? http}) : _http = http ?? BggHttp();
 
   /// Retrieve information about a particular board game by [gameId].
-  Future<BoardGame> getBoardGame(int gameId) async {
-    return _getFirstElement(
-        ['thing'],
-        const BoardGameDecoder(),
-        ThingParameters(
-            id: [gameId],
-            type: [ThingType.boardgame, ThingType.boardgameexpansion]));
+  Future<BoardGame?> getBoardGame(int gameId) async {
+    return _getFirstElement(['thing'], const BoardGameDecoder(),
+        ThingParameters(id: [gameId], type: [ThingType.boardgame, ThingType.boardgameexpansion]));
   }
 
   /// Retrieve information about a particular thing.
-  Future<BoardGame> getThing(ThingParameters parameters) async {
+  Future<BoardGame?> getThing(ThingParameters parameters) async {
     return _getFirstElement(['thing'], const BoardGameDecoder(), parameters);
   }
 
@@ -60,8 +57,8 @@ class Bgg {
 
   /// Retrieves a list of board games (only) matching [query].
   Future<List<BoardGameRef>> searchBoardGames(String query) async {
-    return _getAllElements(['search'], const BoardGameRefDecoder(),
-        SearchParameters(query: query, type: [ThingType.boardgame]));
+    return _getAllElements(
+        ['search'], const BoardGameRefDecoder(), SearchParameters(query: query, type: [ThingType.boardgame]));
   }
 
   /// Retrieves a list of all things matching [query].
@@ -74,25 +71,20 @@ class Bgg {
     return _getAllElements(['search'], const ItemRefDecoder(), parameters);
   }
 
-  Future<T> _getRoot<T>(List<String> path, XmlDecoder<T> decoder,
-      QueryParameters parameters) async {
-    final xml = (await _http.get(path, queryParameters: parameters.toMap()))
-        .rootElement;
+  Future<T> _getRoot<T>(List<String> path, XmlDecoder<T> decoder, QueryParameters parameters) async {
+    final xml = (await _http.get(path, queryParameters: parameters.toMap())).rootElement;
     return decoder.decode(xml);
   }
 
-  Future<T> _getFirstElement<T>(List<String> path, XmlDecoder<T> decoder,
-      QueryParameters parameters) async {
+  Future<T?> _getFirstElement<T>(List<String> path, XmlDecoder<T> decoder, QueryParameters parameters) async {
     final xml = (await _http.get(path, queryParameters: parameters.toMap()))
         .rootElement
         .children
-        .firstWhere((e) => e.nodeType == XmlNodeType.ELEMENT,
-            orElse: () => null);
-    return decoder.decode(xml);
+        .firstWhereOrNull((e) => e.nodeType == XmlNodeType.ELEMENT);
+    return xml != null ? decoder.decode(xml) : null;
   }
 
-  Future<List<T>> _getAllElements<T>(List<String> path, XmlDecoder<T> decoder,
-      QueryParameters parameters) async {
+  Future<List<T>> _getAllElements<T>(List<String> path, XmlDecoder<T> decoder, QueryParameters parameters) async {
     final xml = (await _http.get(path, queryParameters: parameters.toMap()))
         .rootElement
         .children

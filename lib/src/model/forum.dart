@@ -1,13 +1,13 @@
 import 'thread.dart';
 
 class Forum {
-  final int id;
-  final int groupId;
-  final String title;
-  final String description;
-  final int numThreads;
-  final int numPosts;
-  final String lastPostDate;
+  final int? id;
+  final int? groupId;
+  final String? title;
+  final String? description;
+  final int? numThreads;
+  final int? numPosts;
+  final String? lastPostDate;
   final List<Thread> threads;
 
   Forum(
@@ -18,7 +18,7 @@ class Forum {
       this.numThreads,
       this.numPosts,
       this.lastPostDate,
-      this.threads});
+      this.threads = const []});
 
   @override
   String toString() {

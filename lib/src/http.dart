@@ -13,7 +13,7 @@ class BggHttp {
   final Client _http;
   final Uri _baseUri;
 
-  BggHttp({Client http, Uri baseUri})
+  BggHttp({Client? http, Uri? baseUri})
       : _http = http ?? Client(),
         _baseUri = baseUri ?? _defaultBaseUri;
 

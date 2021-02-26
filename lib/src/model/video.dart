@@ -1,12 +1,12 @@
 class Video {
-  int id;
-  String title;
-  String category;
-  String language;
-  String link;
-  String username;
-  int userId;
-  String postDate;
+  int? id;
+  String? title;
+  String? category;
+  String? language;
+  String? link;
+  String? username;
+  int? userId;
+  String? postDate;
 
   Video(
       {this.id,

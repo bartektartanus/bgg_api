@@ -9,7 +9,7 @@ class ForumListParameters extends QueryParameters {
   /// The page of the thread list to return; page size is 50. Threads in the thread list are sorted in order of most recent post.
   final ForumListType type;
 
-  ForumListParameters({this.id, this.type});
+  ForumListParameters({required this.id, required this.type});
 
   @override
   Map<String, dynamic> toMap() {

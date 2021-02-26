@@ -7,7 +7,7 @@ class ThreadDecoder extends XmlDecoder<Thread> {
   const ThreadDecoder();
 
   @override
-  Thread decode(XmlElement xml) {
+  Thread decode(XmlNode xml) {
     return Thread(
       id: readIntAttribute(xml, 'id'),
       subject: readStringAttribute(xml, 'subject'),

@@ -142,7 +142,7 @@ void main() {
     expect(boardGame.description, equals("Splendor is a game of chip-collecting and card development. Players are merchants of the Renaissance trying to buy gem mines, means of transportation, shops—all in order to acquire the most prestige points. If you're wealthy enough, you might even receive a visit from a noble at some point, which of course will further increase your prestige.\n\n"));
     expect(boardGame.thumbnail, equals(Uri.parse('https://cf.geekdo-images.com/thumb/img/D4hkkHfOgu22PwgJomjplWAveuo=/fit-in/200x150/filters:strip_icc()/pic1904079.jpg')));
     expect(boardGame.image, equals(Uri.parse('https://cf.geekdo-images.com/original/img/PgaVULm0QKeFV2zTro4hJEb70Yk=/0x0/pic1904079.jpg')));
-    expect(boardGame.videos?.length, equals(3));
+    expect(boardGame.videos.length, equals(3));
     expect(boardGame.videos[0].id, equals(285312));
     expect(boardGame.videos[0].title, equals('How to setup play and review Splendor'));
     expect(boardGame.names, equals(['Splendor', 'Goharneshan (گوهرنشان)', 'Роскошь']));

@@ -1,13 +1,11 @@
-import 'package:meta/meta.dart';
-
 class Family {
-  final int id;
-  final String name;
-  final String description;
+  final int? id;
+  final String? name;
+  final String? description;
 
   const Family({
-    @required this.id,
-    @required this.name,
+    this.id,
+    this.name,
     this.description,
   });
 

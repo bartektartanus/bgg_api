@@ -7,7 +7,7 @@ class FamilyDecoder extends XmlDecoder<Family> {
   const FamilyDecoder();
 
   @override
-  Family decode(XmlElement xml) {
+  Family decode(XmlNode xml) {
     return Family(
       id: readId(xml),
       name: readStringValue(xml, 'name'),

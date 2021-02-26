@@ -1,4 +1,9 @@
-## [0.2.2] - 2020-10-17
+## [0.3.0] - 2020-10-17
+
+### Breaking
+* migrate to Dart 2.12 and null safety
+
+## [0.2.2] - 2021-01-23
 
 ### Changed
 * `meta` dependency bump
