@@ -1,3 +1,8 @@
+## [0.3.0] - 2021-10-03
+
+### Breaking
+* migrate to Dart 2.12 and null safety
+
 ## [0.3.0-nullsafety] - 2020-10-17
 
 ### Breaking
