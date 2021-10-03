@@ -15,6 +15,10 @@ dependencies:
   meta: ^1.7.0
 
 dev_dependencies:
+  analyzer: ^2.4.0
   test: ^1.16.4
-  test_coverage: ^0.5.0
+  test_coverage:
+    git:
+      url: https://github.com/civts/test-coverage.git
+      ref: aa6ffb41c28d7dec4e3bb11c3b7c4729e8271a69
   pedantic: ^1.11.1
