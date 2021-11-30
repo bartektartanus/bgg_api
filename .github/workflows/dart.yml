@@ -21,5 +21,10 @@ jobs:
       - name: Test with coverage
         run: dart test --coverage=coverage
 
-      - name: Upload coverage
+      - name: Convert coverage to ICOV
+        run: pub run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
+
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
+        with:
+          file: coverage.lcov
