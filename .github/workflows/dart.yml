@@ -19,7 +19,7 @@ jobs:
         run: dart pub get
 
       - name: Test with coverage
-        run: dart test --coverage=coverage
+        run: dart test --coverage=coverage -r expanded
 
       - name: Convert coverage to ICOV
         run: pub run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
