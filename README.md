@@ -1,7 +1,7 @@
 # bgg_api
 
 [![pub package](https://img.shields.io/pub/v/bgg_api.svg)](https://pub.dartlang.org/packages/bgg_api)
-[![Build Status](https://app.travis-ci.com/bartektartanus/bgg_api.svg?branch=master)](https://app.travis-ci.com/bartektartanus/bgg_api)
+[![Dart](https://github.com/bartektartanus/bgg_api/actions/workflows/dart.yml/badge.svg)](https://github.com/bartektartanus/bgg_api/actions/workflows/dart.yml)
 [![codecov](https://codecov.io/gh/bartektartanus/bgg_api/branch/master/graph/badge.svg)](https://codecov.io/gh/bartektartanus/bgg_api)
 
 
