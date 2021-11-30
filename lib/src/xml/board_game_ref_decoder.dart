@@ -9,8 +9,9 @@ class BoardGameRefDecoder extends XmlDecoder<BoardGameRef> {
   @override
   BoardGameRef decode(XmlNode xml) {
     return BoardGameRef(
-        id: readId(xml),
-        name: readStringValue(xml, 'name'),
-        yearPublished: readIntValue(xml, 'yearpublished'));
+      id: readId(xml),
+      name: readStringValue(xml, 'name'),
+      yearPublished: readIntValue(xml, 'yearpublished'),
+    );
   }
 }

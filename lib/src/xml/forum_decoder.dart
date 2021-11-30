@@ -19,9 +19,7 @@ class ForumDecoder extends XmlDecoder<Forum> {
       numThreads: readIntAttribute(xml, 'numthreads'),
       numPosts: readIntAttribute(xml, 'numposts'),
       lastPostDate: readStringAttribute(xml, 'lastpostdate'),
-      threads: findElements(getElement(xml, 'threads'), 'thread')
-          .map((e) => threadDecoder.decode(e))
-          .toList(),
+      threads: findElements(getElement(xml, 'threads'), 'thread').map((e) => threadDecoder.decode(e)).toList(),
     );
   }
 }

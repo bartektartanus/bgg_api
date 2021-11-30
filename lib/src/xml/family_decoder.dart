@@ -12,6 +12,8 @@ class FamilyDecoder extends XmlDecoder<Family> {
       id: readId(xml),
       name: readStringValue(xml, 'name'),
       description: readStringUnescaped(xml, 'description'),
+      thumbnail: readUri(xml, 'thumbnail'),
+      image: readUri(xml, 'image'),
     );
   }
 }

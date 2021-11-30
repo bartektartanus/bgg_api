@@ -1,3 +1,9 @@
+## [0.5.0] - 2021-11-30
+### Added
+* `thumbnail` and `image` field to `Family`
+### Changed
+* dependency update
+
 ## [0.4.0] - 2021-10-03
 
 ### Breaking

@@ -1,4 +1,3 @@
-
 import 'video.dart';
 
 class BoardGame {
@@ -14,8 +13,8 @@ class BoardGame {
   final int? minAge;
   final Uri? thumbnail;
   final Uri? image;
-  List<Video> videos = [];
-  List<String> names = [];
+  final List<Video> videos;
+  final List<String> names;
 
   BoardGame({
     required this.id,

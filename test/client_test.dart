@@ -1,4 +1,6 @@
 import 'package:bgg_api/bgg_api.dart';
+import 'package:bgg_api/src/api/family_parameters.dart';
+import 'package:bgg_api/src/api/family_type.dart';
 import 'package:bgg_api/src/api/forum_list_parameters.dart';
 import 'package:bgg_api/src/api/forum_list_type.dart';
 import 'package:bgg_api/src/api/forum_parameters.dart';
@@ -37,6 +39,18 @@ void main() {
       expect(boardGame.thumbnail.toString(), contains('thumb'));
       expect(boardGame.image.toString(), startsWith('https://cf.geekdo-images.com/'));
       expect(boardGame.image.toString(), contains('original'));
+    });
+
+    test('should find family by id', () async {
+      final bgg = Bgg();
+      final familyItems = await bgg.getFamilyItems(FamilyParameters(id: [55], type: [FamilyType.boardgamefamily]));
+      expect(familyItems.length, equals(1));
+
+      final familyItem = familyItems[0];
+      expect(familyItem.name, equals('Game: Wings of Glory'));
+      expect(familyItem.description, equals("Wings of War is a series of games designed by Andrea Angiolino & Pier Giorgio Paglia that merges card and board game mechanics to recreate aerial combat.\n\n"));
+      expect(familyItem.thumbnail.toString(), startsWith('https://cf.geekdo-images.com/'));
+      expect(familyItem.image.toString(), startsWith('https://cf.geekdo-images.com/'));
     });
 
     test('should find board game expansion by id', () async {

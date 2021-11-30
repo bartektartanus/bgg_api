@@ -1,6 +1,7 @@
 import 'package:html_unescape/html_unescape.dart';
 import 'package:meta/meta.dart';
 import 'package:xml/xml.dart';
+
 import '../utils/list.dart';
 
 @immutable
@@ -11,8 +12,7 @@ abstract class XmlDecoder<T> {
   T decode(XmlNode xml);
 
   @protected
-  int? readIntAttribute(XmlNode xml, String attribute) =>
-      int.tryParse(readStringAttribute(xml, attribute) ?? '');
+  int? readIntAttribute(XmlNode xml, String attribute) => int.tryParse(readStringAttribute(xml, attribute) ?? '');
 
   @protected
   int? readId(XmlNode xml) => int.tryParse(xml.getAttribute('id') ?? '');
@@ -31,10 +31,12 @@ abstract class XmlDecoder<T> {
 
   @protected
   String? readString(XmlNode xml, String path) {
-    return xml
-        .findAllElements(path)
-        .firstOrNull
-        ?.text;
+    return xml.findAllElements(path).firstOrNull?.text;
+  }
+
+  @protected
+  Uri? readUri(XmlNode xml, String path) {
+    return Uri.tryParse(readString(xml, path) ?? '');
   }
 
   @protected
@@ -44,15 +46,11 @@ abstract class XmlDecoder<T> {
 
   @protected
   String? readStringValue(XmlNode xml, String path) {
-    return xml
-        .findAllElements(path)
-        .firstOrNull
-        ?.getAttribute('value');
+    return xml.findAllElements(path).firstOrNull?.getAttribute('value');
   }
 
   @protected
-  String? readStringValueWithAttribute(XmlNode xml, String path,
-      String attributeName, String attributeValue) {
+  String? readStringValueWithAttribute(XmlNode xml, String path, String attributeName, String attributeValue) {
     return xml
         .findAllElements(path)
         .firstWhereOrNull((element) => element.getAttribute(attributeName) == attributeValue)

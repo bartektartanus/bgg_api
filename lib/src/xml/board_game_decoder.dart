@@ -22,15 +22,10 @@ class BoardGameDecoder extends XmlDecoder<BoardGame> {
       minPlayTime: readIntValue(xml, 'minplaytime'),
       maxPlayTime: readIntValue(xml, 'maxplaytime'),
       minAge: readIntValue(xml, 'minage'),
-      thumbnail: Uri.tryParse(readString(xml, 'thumbnail') ?? ''),
-      image: Uri.tryParse(readString(xml, 'image') ?? ''),
-      videos: findElements(getElement(xml, 'videos'), 'video')
-          .map((e) => videoDecoder.decode(e))
-          .toList(),
-      names: findElements(xml, 'name')
-          .map((e) => e.getAttribute('value'))
-          .whereType<String>()
-          .toList(),
+      thumbnail: readUri(xml, 'thumbnail'),
+      image: readUri(xml, 'image'),
+      videos: findElements(getElement(xml, 'videos'), 'video').map((e) => videoDecoder.decode(e)).toList(),
+      names: findElements(xml, 'name').map((e) => e.getAttribute('value')).whereType<String>().toList(),
     );
   }
 }

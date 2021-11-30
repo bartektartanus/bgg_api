@@ -16,9 +16,9 @@ class FamilyParameters extends QueryParameters {
   @override
   Map<String, dynamic> toMap() {
     final map = {'id': id.map((e) => e.toString()).join(',')};
-    if(type.isNotEmpty) {
+    if (type.isNotEmpty) {
       map['type'] = type.map((e) => e.name()).join(',');
-  }
+    }
     return map;
   }
 }
