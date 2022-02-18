@@ -1,3 +1,7 @@
+## [0.6.0] - 2022-02-18
+### Added
+* fetch user collection
+
 ## [0.5.0] - 2021-11-30
 ### Added
 * `thumbnail` and `image` field to `Family`

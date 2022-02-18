@@ -35,6 +35,12 @@ abstract class XmlDecoder<T> {
   }
 
   @protected
+  int? readInt(XmlNode xml, String path) {
+    var value = readString(xml, path);
+    return value != null ? int.tryParse(value) : null;
+  }
+
+  @protected
   Uri? readUri(XmlNode xml, String path) {
     return Uri.tryParse(readString(xml, path) ?? '');
   }

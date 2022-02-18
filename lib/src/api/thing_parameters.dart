@@ -49,7 +49,7 @@ class ThingParameters extends QueryParameters {
 
   @override
   Map<String, dynamic> toMap() {
-    var map = {'id': id.map((e) => e.toString()).join(',')};
+    var map = {'id': id.join(',')};
     if (type.isNotEmpty) {
       map.putIfAbsent('type', () => type.map((e) => e.name()).join(','));
     }
