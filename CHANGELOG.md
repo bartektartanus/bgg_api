@@ -1,3 +1,7 @@
+## [0.7.0] - 2022-07-12
+### Changed
+* dependency update (`xml` to v6)
+
 ## [0.6.0] - 2022-02-18
 ### Added
 * fetch user collection
