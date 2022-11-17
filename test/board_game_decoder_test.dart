@@ -89,6 +89,27 @@ void main() {
           <link type="boardgameartist" id="14878" value="Pascal Quidault"/>
           <link type="boardgamepublisher" id="25842" value="Space Cowboys"/>
           <link type="boardgamepublisher" id="157" value="Asmodee"/>
+          <statistics page="1">
+            <ratings>
+            <usersrated value="115081"/>
+            <average value="7.56519"/>
+            <bayesaverage value="7.46219"/>
+            <ranks>
+            <rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="124" bayesaverage="7.46219"/>
+            <rank type="family" id="5497" name="strategygames" friendlyname="Strategy Game Rank" value="133" bayesaverage="7.38267"/>
+            <rank type="family" id="5499" name="familygames" friendlyname="Family Game Rank" value="20" bayesaverage="7.44607"/>
+            </ranks>
+            <stddev value="1.33124"/>
+            <median value="0"/>
+            <owned value="180567"/>
+            <trading value="2805"/>
+            <wanting value="616"/>
+            <wishing value="9642"/>
+            <numcomments value="18088"/>
+            <numweights value="5771"/>
+            <averageweight value="2.4044"/>
+            </ratings>
+          </statistics>
           <videos total="324">
             <video id="285312" title="How to setup play and review Splendor" category="review" language="English" link="http://www.youtube.com/watch?v=rIzAdePKHy0" username="boulderman" userid="1206296" postdate="2020-10-06T11:05:13-05:00"/>
             <video id="285181" title="Splendor (beanview) with 0ctavian" category="humor" language="English" link="http://www.youtube.com/watch?v=lxbeF63gsi4" username="Octavian1" userid="2697904" postdate="2020-10-05T22:31:49-05:00"/>
@@ -139,12 +160,24 @@ void main() {
     expect(boardGame.minPlayTime, equals(30));
     expect(boardGame.maxPlayTime, equals(30));
     expect(boardGame.playingTime, equals(30));
-    expect(boardGame.description, equals("Splendor is a game of chip-collecting and card development. Players are merchants of the Renaissance trying to buy gem mines, means of transportation, shops—all in order to acquire the most prestige points. If you're wealthy enough, you might even receive a visit from a noble at some point, which of course will further increase your prestige.\n\n"));
-    expect(boardGame.thumbnail, equals(Uri.parse('https://cf.geekdo-images.com/thumb/img/D4hkkHfOgu22PwgJomjplWAveuo=/fit-in/200x150/filters:strip_icc()/pic1904079.jpg')));
-    expect(boardGame.image, equals(Uri.parse('https://cf.geekdo-images.com/original/img/PgaVULm0QKeFV2zTro4hJEb70Yk=/0x0/pic1904079.jpg')));
+    expect(boardGame.rank, equals('124'));
+    expect(
+        boardGame.description,
+        equals(
+            "Splendor is a game of chip-collecting and card development. Players are merchants of the Renaissance trying to buy gem mines, means of transportation, shops—all in order to acquire the most prestige points. If you're wealthy enough, you might even receive a visit from a noble at some point, which of course will further increase your prestige.\n\n"));
+    expect(
+        boardGame.thumbnail,
+        equals(Uri.parse(
+            'https://cf.geekdo-images.com/thumb/img/D4hkkHfOgu22PwgJomjplWAveuo=/fit-in/200x150/filters:strip_icc()/pic1904079.jpg')));
+    expect(
+        boardGame.image,
+        equals(Uri.parse(
+            'https://cf.geekdo-images.com/original/img/PgaVULm0QKeFV2zTro4hJEb70Yk=/0x0/pic1904079.jpg')));
     expect(boardGame.videos.length, equals(3));
     expect(boardGame.videos[0].id, equals(285312));
-    expect(boardGame.videos[0].title, equals('How to setup play and review Splendor'));
-    expect(boardGame.names, equals(['Splendor', 'Goharneshan (گوهرنشان)', 'Роскошь']));
+    expect(boardGame.videos[0].title,
+        equals('How to setup play and review Splendor'));
+    expect(boardGame.names,
+        equals(['Splendor', 'Goharneshan (گوهرنشان)', 'Роскошь']));
   });
 }

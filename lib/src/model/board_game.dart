@@ -11,6 +11,7 @@ class BoardGame {
   final int? minPlayTime;
   final int? maxPlayTime;
   final int? minAge;
+  final String? rank;
   final Uri? thumbnail;
   final Uri? image;
   final List<Video> videos;
@@ -27,6 +28,7 @@ class BoardGame {
     required this.minPlayTime,
     required this.maxPlayTime,
     required this.minAge,
+    required this.rank,
     required this.thumbnail,
     required this.image,
     this.videos = const [],
@@ -35,6 +37,6 @@ class BoardGame {
 
   @override
   String toString() {
-    return 'BoardGame{id: $id, name: $name, description: $description, yearPublished: $yearPublished, minPlayers: $minPlayers, maxPlayers: $maxPlayers, playingTime: $playingTime, minPlayTime: $minPlayTime, maxPlayTime: $maxPlayTime, minAge: $minAge, thumbnail: $thumbnail, image: $image, videos: $videos}';
+    return 'BoardGame{id: $id, name: $name, description: $description, yearPublished: $yearPublished, minPlayers: $minPlayers, maxPlayers: $maxPlayers, playingTime: $playingTime, minPlayTime: $minPlayTime, maxPlayTime: $maxPlayTime, minAge: $minAge, rank: $rank, thumbnail: $thumbnail, image: $image, videos: $videos}';
   }
 }
