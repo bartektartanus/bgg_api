@@ -11,5 +11,4 @@ void main() async {
 
   var searchBoardGamesResult = await bgg.searchBoardGames('catan');
   print(searchBoardGamesResult.length);
-
 }
