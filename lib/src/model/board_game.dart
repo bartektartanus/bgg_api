@@ -1,3 +1,5 @@
+import 'package:bgg_api/src/model/generic_ref.dart';
+
 import 'video.dart';
 
 class BoardGame {
@@ -15,6 +17,9 @@ class BoardGame {
   final Uri? image;
   final List<Video> videos;
   final List<String> names;
+  final List<Generic> boardGameDesigner;
+  final List<Generic> boardGameArtist;
+  final List<Generic> boardGamePublisher;
 
   BoardGame({
     required this.id,
@@ -29,6 +34,9 @@ class BoardGame {
     required this.minAge,
     required this.thumbnail,
     required this.image,
+    this.boardGameDesigner = const [],
+    this.boardGameArtist = const [],
+    this.boardGamePublisher = const [],
     this.videos = const [],
     this.names = const [],
   });
