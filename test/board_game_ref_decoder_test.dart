@@ -26,7 +26,8 @@ void main() {
     final decoder = BoardGameRefDecoder();
     var boardGameRef = decoder.decode(document.rootElement);
     expect(boardGameRef.id, equals(90100));
-    expect(boardGameRef.name, equals('Die Pioniere (fan expansion for The Settlers of Catan)'));
+    expect(boardGameRef.name,
+        equals('Die Pioniere (fan expansion for The Settlers of Catan)'));
     expect(boardGameRef.yearPublished, equals(null));
   });
 }

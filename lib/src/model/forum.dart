@@ -10,15 +10,16 @@ class Forum {
   final String? lastPostDate;
   final List<Thread> threads;
 
-  Forum(
-      {this.id,
-      this.groupId,
-      this.title,
-      this.description,
-      this.numThreads,
-      this.numPosts,
-      this.lastPostDate,
-      this.threads = const []});
+  Forum({
+    this.id,
+    this.groupId,
+    this.title,
+    this.description,
+    this.numThreads,
+    this.numPosts,
+    this.lastPostDate,
+    this.threads = const [],
+  });
 
   @override
   String toString() {

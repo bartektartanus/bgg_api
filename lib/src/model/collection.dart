@@ -16,15 +16,16 @@ class CollectionItem {
   final Uri? thumbnail;
   final int? numPlays;
 
-  CollectionItem(
-      {this.objectType,
-      this.objectId,
-      this.subtype,
-      this.collId,
-      this.name,
-      this.originalName,
-      this.yearPublished,
-      this.image,
-      this.thumbnail,
-      this.numPlays});
+  CollectionItem({
+    this.objectType,
+    this.objectId,
+    this.subtype,
+    this.collId,
+    this.name,
+    this.originalName,
+    this.yearPublished,
+    this.image,
+    this.thumbnail,
+    this.numPlays,
+  });
 }

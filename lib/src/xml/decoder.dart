@@ -12,7 +12,8 @@ abstract class XmlDecoder<T> {
   T decode(XmlNode xml);
 
   @protected
-  int? readIntAttribute(XmlNode xml, String attribute) => int.tryParse(readStringAttribute(xml, attribute) ?? '');
+  int? readIntAttribute(XmlNode xml, String attribute) =>
+      int.tryParse(readStringAttribute(xml, attribute) ?? '');
 
   @protected
   int? readId(XmlNode xml) => int.tryParse(xml.getAttribute('id') ?? '');
@@ -56,10 +57,12 @@ abstract class XmlDecoder<T> {
   }
 
   @protected
-  String? readStringValueWithAttribute(XmlNode xml, String path, String attributeName, String attributeValue) {
+  String? readStringValueWithAttribute(
+      XmlNode xml, String path, String attributeName, String attributeValue) {
     return xml
         .findAllElements(path)
-        .firstWhereOrNull((element) => element.getAttribute(attributeName) == attributeValue)
+        .firstWhereOrNull(
+            (element) => element.getAttribute(attributeName) == attributeValue)
         ?.getAttribute('value');
   }
 

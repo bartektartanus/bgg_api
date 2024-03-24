@@ -10,7 +10,8 @@ void main() {
   group('api client', () {
     test('should search board games by name', () async {
       var bgg = Bgg();
-      expect(await bgg.searchBoardGames('list miłosny'), hasLength(greaterThan(0)));
+      expect(await bgg.searchBoardGames('list miłosny'),
+          hasLength(greaterThan(0)));
       expect(await bgg.searchBoardGames('catan'), hasLength(greaterThan(0)));
       expect(await bgg.searchBoardGames('splendor'), hasLength(greaterThan(0)));
       expect(await bgg.searchBoardGames('saboteur'), hasLength(greaterThan(0)));
@@ -20,7 +21,10 @@ void main() {
       var bgg = Bgg();
       var searchGames = await bgg.searchBoardGames('list miłosny');
       expect(searchGames, hasLength(greaterThan(0)));
-      expect(searchGames.every((e) => e.name!.toLowerCase().contains('list miłosny')), isTrue);
+      expect(
+          searchGames
+              .every((e) => e.name!.toLowerCase().contains('list miłosny')),
+          isTrue);
     });
 
     test('should find board game by id', () async {
@@ -34,23 +38,32 @@ void main() {
       expect(boardGame.minPlayTime, equals(30));
       expect(boardGame.playingTime, equals(30));
       expect(boardGame.minAge, equals(10));
-      expect(boardGame.description, startsWith('Splendor is a game of chip-collecting'));
-      expect(boardGame.thumbnail.toString(), startsWith('https://cf.geekdo-images.com/'));
+      expect(boardGame.description,
+          startsWith('Splendor is a game of chip-collecting'));
+      expect(boardGame.thumbnail.toString(),
+          startsWith('https://cf.geekdo-images.com/'));
       expect(boardGame.thumbnail.toString(), contains('thumb'));
-      expect(boardGame.image.toString(), startsWith('https://cf.geekdo-images.com/'));
+      expect(boardGame.image.toString(),
+          startsWith('https://cf.geekdo-images.com/'));
       expect(boardGame.image.toString(), contains('original'));
     });
 
     test('should find family by id', () async {
       final bgg = Bgg();
-      final familyItems = await bgg.getFamilyItems(FamilyParameters(id: [55], type: [FamilyType.boardgamefamily]));
+      final familyItems = await bgg.getFamilyItems(
+          FamilyParameters(id: [55], type: [FamilyType.boardgamefamily]));
       expect(familyItems.length, equals(1));
 
       final familyItem = familyItems[0];
       expect(familyItem.name, equals('Game: Wings of Glory'));
-      expect(familyItem.description, equals("Wings of War is a series of games designed by Andrea Angiolino & Pier Giorgio Paglia that merges card and board game mechanics to recreate aerial combat.\n\n"));
-      expect(familyItem.thumbnail.toString(), startsWith('https://cf.geekdo-images.com/'));
-      expect(familyItem.image.toString(), startsWith('https://cf.geekdo-images.com/'));
+      expect(
+          familyItem.description,
+          equals(
+              "Wings of War is a series of games designed by Andrea Angiolino & Pier Giorgio Paglia that merges card and board game mechanics to recreate aerial combat.\n\n"));
+      expect(familyItem.thumbnail.toString(),
+          startsWith('https://cf.geekdo-images.com/'));
+      expect(familyItem.image.toString(),
+          startsWith('https://cf.geekdo-images.com/'));
     });
 
     test('should find board game expansion by id', () async {
@@ -64,7 +77,10 @@ void main() {
       expect(boardGame.minPlayTime, equals(120));
       expect(boardGame.playingTime, equals(120));
       expect(boardGame.minAge, equals(10));
-      expect(boardGame.description, startsWith('Allows you to add up to two more opponents to The Settlers of Catan.'));
+      expect(
+          boardGame.description,
+          startsWith(
+              'Allows you to add up to two more opponents to The Settlers of Catan.'));
     });
 
     test('should find forum by id', () async {
@@ -79,7 +95,8 @@ void main() {
 
     test('should find forum list by id', () async {
       var bgg = Bgg();
-      var forumList = await bgg.getForumList(ForumListParameters(id: 148228, type: ForumListType.thing));
+      var forumList = await bgg.getForumList(
+          ForumListParameters(id: 148228, type: ForumListType.thing));
       expect(forumList.length, equals(10));
     });
   });

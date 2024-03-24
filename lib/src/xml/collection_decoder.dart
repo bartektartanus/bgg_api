@@ -6,12 +6,15 @@ import 'decoder.dart';
 class CollectionDecoder extends XmlDecoder<Collection> {
   const CollectionDecoder();
 
-  final CollectionItemDecoder collectionItemDecoder = const CollectionItemDecoder();
+  final CollectionItemDecoder collectionItemDecoder =
+      const CollectionItemDecoder();
 
   @override
   Collection decode(XmlNode xml) {
     return Collection(
-      items: findElements(xml, 'item').map((e) => collectionItemDecoder.decode(e)).toList(),
+      items: findElements(xml, 'item')
+          .map((e) => collectionItemDecoder.decode(e))
+          .toList(),
     );
   }
 }
